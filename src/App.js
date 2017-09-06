@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
+import MonetaryUnit from './MonetaryUnit'
+import CurrencyModal from './CurrencyModal'
 
 class App extends Component {
   constructor() {
@@ -8,10 +10,16 @@ class App extends Component {
       amount: '0.00',
       base: 'BTC',
       currency: 'USD',
-      name: 'Bitcoin',
+      digital: 'Bitcoin',
       refreshInterval: 1,
       seconds: 60,
+      showModal: false,
     }
+
+    this.open = this.open.bind(this)
+    this.close = this.close.bind(this)
+    this.changeCurrency = this.changeCurrency.bind(this)
+    this.getPrice = this.getPrice.bind(this)
   }
 
   getPrice() {
@@ -32,6 +40,24 @@ class App extends Component {
         console.error('Network error: ' + err);
       }
     )
+  }
+
+  open() {
+    this.setState({showModal: true})
+  }
+
+  close() {
+    this.setState({showModal: false})
+  }
+
+  changeCurrency(e) {
+    this.setState({
+      base: e.base,
+      currency: e.currency,
+      digital: e.digital,
+      seconds: 0,
+    })
+    this.close()
   }
 
   componentWillMount() {
@@ -59,17 +85,18 @@ class App extends Component {
       <div className="App">
 
         <nav>
-          <a href="/">Coinbase Dashboard</a>
+          <a className="brand" href="/">Coinbase Dashboard</a>
+          <a onClick={this.open} style={{float: 'right'}}>Settings</a>
         </nav>
 
         <div className="container-fluid">
 
           <div className="dashboard">
             <div className="currency">
-              <h3>{this.state.name}</h3>
+              <h3>{this.state.digital}</h3>
               <div className="price">
                 <h1 className="display-1">
-                  ${this.state.amount}
+                  <MonetaryUnit currency={this.state.currency} />{this.state.amount}
                 </h1>
                 <small className="refreshStatus">{this.state.seconds} seconds until refresh</small>
               </div>
@@ -81,6 +108,15 @@ class App extends Component {
           </footer>
 
         </div>
+
+        <CurrencyModal
+          close={this.close}
+          changeCurrency={this.changeCurrency}
+          showModal={this.state.showModal}
+          base={this.state.base}
+          currency={this.state.currency}
+          digital={this.state.digital}
+        />
 
       </div>
 
