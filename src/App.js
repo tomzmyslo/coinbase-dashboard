@@ -85,7 +85,7 @@ class App extends Component {
       <div className="App">
 
         <nav>
-          <a className="brand" href="/">Coinbase Dashboard</a>
+          <a className="brand" href="/coinbase-dashboard">Coinbase Dashboard</a>
           <a onClick={this.open} style={{float: 'right'}}>Settings</a>
         </nav>
 
