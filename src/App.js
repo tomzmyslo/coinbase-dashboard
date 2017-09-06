@@ -3,6 +3,10 @@ import './App.css'
 import MonetaryUnit from './MonetaryUnit'
 import CurrencyModal from './CurrencyModal'
 
+document.ontouchmove = (event) => {
+  event.preventDefault()
+}
+
 class App extends Component {
   constructor() {
     super()
