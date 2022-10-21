@@ -2,7 +2,7 @@
   "name": "coinbase-dashboard",
   "version": "0.2.0",
   "private": true,
-  "homepage": "http://tomzmyslo.github.io/coinbase-dashboard",
+  "homepage": "/",
   "dependencies": {
     "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^2.0.12",
