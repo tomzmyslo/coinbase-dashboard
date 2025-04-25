@@ -65,7 +65,7 @@ export default function Modal({
                     <div className="relative">
                       <Select
                         className="h-10 w-full appearance-none rounded border border-indigo-500 bg-white pl-2"
-                        value={currency.value}
+                        value={newCurrency.value}
                         onChange={(e) =>
                           setNewCurrency(
                             currencies.find((currency) => currency.value === e.target.value),
@@ -87,7 +87,7 @@ export default function Modal({
                     <div className="relative">
                       <Select
                         className="h-10 w-full appearance-none rounded border border-indigo-500 pl-2"
-                        value={fiat.value}
+                        value={newFiat.value}
                         onChange={(e) =>
                           setNewFiat(fiats.find((fiat) => fiat.value === e.target.value))
                         }
