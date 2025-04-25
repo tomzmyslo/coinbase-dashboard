@@ -40,4 +40,4 @@ jobs:
       - name: Copy Files
         run: |
           rsync -av --delete-after -e "ssh -o StrictHostKeyChecking=no" \
-          ./dist/* ${{ secrets.USER }}@${{ secrets.IP_ADDRESS }}:/var/www/www.zmyslo.com
+          ./dist/* ${{ secrets.USER }}@${{ secrets.IP_ADDRESS }}:/var/www/crypto.zmyslo.com
